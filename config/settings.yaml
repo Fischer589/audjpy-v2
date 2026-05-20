@@ -1,0 +1,118 @@
+# AUDJPY V2 — Default configuration
+# All values here are safe defaults for paper trading.
+# Override in config/settings.local.yaml (never committed).
+# Environment vars with prefix BOT_ also override (e.g. BOT_IBKR_PORT=4001).
+
+symbol: AUDJPY
+broker: ibkr
+execution_mode: paper
+live_trading: false
+
+# ---------------------------------------------------------------------------
+# IBKR connection
+# ---------------------------------------------------------------------------
+ibkr:
+  host: 127.0.0.1
+  port: 4002           # paper: 4002, live: 4001
+  client_id: 1
+
+poll_interval_seconds: 30
+
+# ---------------------------------------------------------------------------
+# Trend gate
+# ---------------------------------------------------------------------------
+min_trend_confidence: 0.50
+trend_lookback_4h: 30
+trend_lookback_1h: 48
+swing_pivot_bars: 3
+require_1h_4h_alignment: true
+
+# ---------------------------------------------------------------------------
+# Corrective structure gate
+# ---------------------------------------------------------------------------
+correction_lookback_5m: 80
+min_correction_bars: 8
+max_correction_bars: 70
+
+# ---------------------------------------------------------------------------
+# Exhaustion gate
+# ---------------------------------------------------------------------------
+min_exhaustion_score: 0.30
+
+# ---------------------------------------------------------------------------
+# Continuation gate
+# ---------------------------------------------------------------------------
+min_continuation_prob: 0.50
+
+# ---------------------------------------------------------------------------
+# Quality gate
+# ---------------------------------------------------------------------------
+min_confidence: 0.52
+
+# ---------------------------------------------------------------------------
+# Volatility parameters
+# ---------------------------------------------------------------------------
+atr_baseline_period: 20
+atr_compression_threshold: 0.70
+atr_chaotic_threshold: 1.60
+
+# ---------------------------------------------------------------------------
+# Risk management
+# ---------------------------------------------------------------------------
+risk_per_trade_pct: 1.0
+max_trades_per_day: 3
+max_daily_loss_r: 2.0
+stop_loss_atr_multiplier: 1.5
+take_profit_rr: 2.5
+starting_balance: 10000.0
+pip_value_usd_per_1k_units: 0.067
+
+# ---------------------------------------------------------------------------
+# Spread filter
+# ---------------------------------------------------------------------------
+max_spread_pips: 2.5
+spread_pips: 1.0
+
+# ---------------------------------------------------------------------------
+# Session filter
+# ---------------------------------------------------------------------------
+allowed_sessions:
+  - tokyo
+  - london
+  - new_york
+
+rollover_no_trade_start: "17:00"
+rollover_no_trade_end: "18:00"
+rollover_timezone: "America/New_York"
+
+# ---------------------------------------------------------------------------
+# News filter
+# ---------------------------------------------------------------------------
+news_filter_enabled: true
+news_blackout_before_minutes: 30
+news_blackout_after_minutes: 15
+news_fail_safe: allow
+news_calendar_path: config/news_calendar.json
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+log_file_path: logs/live.log
+save_chart_snapshots: false
+snapshot_directory: snapshots/
+journal_directory: journals/
+verbose_logging: true
+
+# ---------------------------------------------------------------------------
+# Paper execution
+# ---------------------------------------------------------------------------
+paper_submit_orders: false
+approval_required: true
+approval_timeout_minutes: 5
+
+# ---------------------------------------------------------------------------
+# Telegram alerts
+# ---------------------------------------------------------------------------
+telegram_enabled: false
+telegram_bot_token: ""
+telegram_chat_id: ""
