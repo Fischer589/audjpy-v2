@@ -1,0 +1,34 @@
+# config/settings.local.yaml.example
+#
+# Copy this file to config/settings.local.yaml on your VPS.
+# settings.local.yaml is gitignored — never committed.
+#
+# Only override what differs from settings.yaml.
+
+# Switch to live when ready
+# execution_mode: live
+# live_trading: true
+
+# IBKR live TWS/Gateway port
+# ibkr:
+#   host: 127.0.0.1
+#   port: 4001
+#   client_id: 2
+
+# Tighten risk for live
+# risk_per_trade_pct: 0.5
+# max_trades_per_day: 2
+
+# Submit real paper orders
+# paper_submit_orders: true
+
+# Telegram alerts
+# telegram_enabled: true
+# telegram_bot_token: "your_token_here"
+# telegram_chat_id: "your_chat_id_here"
+
+# Tighter thresholds for production
+# min_trend_confidence: 0.55
+# min_continuation_prob: 0.55
+# min_confidence: 0.56
+# max_spread_pips: 2.0
